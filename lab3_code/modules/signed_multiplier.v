@@ -12,18 +12,13 @@ module signed_multiplier(
     sz,
     fz,
     z_out,
-    x_test,
-    y_test,
     z_test,
     z_test_raw,
-    x_mul_test,
-    y_mul_test
 );
 
 input rst, clk, sx, sy, mul, sz, x_in, y_in;
 output fx, fy, done, fz, z_out;
 
-output [11:0] x_test, y_test, x_mul_test, y_mul_test;
 output [23:0] z_test;
 output [23:0] z_test_raw;
 
@@ -36,12 +31,8 @@ wire [23:0] z_pos;
 wire [23:0] z_res_signed;
 reg [23:0] z_res_final;
 
-assign x_test = x_par;
-assign y_test = y_par;
 assign z_test = z_res_final;
 assign z_test_raw = z_pos;
-assign x_mul_test = x_mul;
-assign y_mul_test = y_mul;
 
 shift_in s_inx(
     .x_in(x_in),
@@ -108,7 +99,7 @@ always@(y_par[11] or x_par[11]) begin
     case(y_par[11]^x_par[11])
         1'b0: z_res_final = z_pos;
         1'b1: z_res_final = z_res_signed;
-        default: z_res_final = 'b0;
+        default: z_res_final = z_pos;
     endcase
 end
 
