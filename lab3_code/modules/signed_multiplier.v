@@ -33,7 +33,6 @@ wire [23:0] z_res_signed;
 wire [23:0] z_res_final;
 
 assign z_test = z_res_final;
-assign z_test_raw = z_pos;
 
 shift_in s_inx(
     .x_in(x_in),
