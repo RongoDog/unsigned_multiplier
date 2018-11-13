@@ -11,17 +11,11 @@ module signed_multiplier(
     done,
     sz,
     fz,
-    z_out,
-    x_test,
-    y_test,
-    z_test
+    z_out
 );
 
 input rst, clk, sx, sy, mul, sz, x_in, y_in;
 output fx, fy, done, fz, z_out;
-
-output [11:0] x_test, y_test;
-output [23:0] z_test;
 
 wire [11:0] x_par;
 wire [11:0] x_mul;
@@ -30,10 +24,6 @@ wire [11:0] y_mul;
 
 wire [23:0] z_pos;
 wire [23:0] z_res_signed;
-
-assign x_test = x_par;
-assign y_test = y_par;
-assign z_test = z_res_signed;
 
 shift_in s_inx(
     .x_in(x_in),
