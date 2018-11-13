@@ -63,8 +63,10 @@ begin
 
   wait(fx == 1'b1);
   wait(fy == 1'b1);
+  @(posedge clk); #5;
   mul = 1'b1;
   wait(done == 1'b1);
+  @(posedge clk); #5;
   sz = 1'b1;
   wait(fz == 1'b1);
 
@@ -126,8 +128,10 @@ begin
 
   wait(fx == 1'b1);
   wait(fy == 1'b1);
+  @(posedge clk); #5;
   mul = 1'b1;
   wait(done == 1'b1);
+  @(posedge clk); #5;
   sz = 1'b1;
   wait(fz == 1'b1);
 
@@ -189,8 +193,10 @@ begin
 
   wait(fx == 1'b1);
   wait(fy == 1'b1);
+  @(posedge clk); #5;
   mul = 1'b1;
   wait(done == 1'b1);
+  @(posedge clk); #5;
   sz = 1'b1;
   wait(fz == 1'b1);
 
@@ -252,8 +258,10 @@ begin
 
   wait(fx == 1'b1);
   wait(fy == 1'b1);
+  @(posedge clk); #5;
   mul = 1'b1;
   wait(done == 1'b1);
+  @(posedge clk); #5;
   sz = 1'b1;
   wait(fz == 1'b1);
 
@@ -315,8 +323,10 @@ begin
 
   wait(fx == 1'b1);
   wait(fy == 1'b1);
+  @(posedge clk); #5;
   mul = 1'b1;
   wait(done == 1'b1);
+  @(posedge clk); #5;
   sz = 1'b1;
   wait(fz == 1'b1);
 
@@ -378,8 +388,10 @@ begin
 
   wait(fx == 1'b1);
   wait(fy == 1'b1);
+  @(posedge clk); #5;
   mul = 1'b1;
   wait(done == 1'b1);
+  @(posedge clk); #5;
   sz = 1'b1;
   wait(fz == 1'b1);
 
@@ -441,8 +453,10 @@ begin
 
   wait(fx == 1'b1);
   wait(fy == 1'b1);
+  @(posedge clk); #5;
   mul = 1'b1;
   wait(done == 1'b1);
+  @(posedge clk); #5;
   sz = 1'b1;
   wait(fz == 1'b1);
 
@@ -504,8 +518,10 @@ begin
 
   wait(fx == 1'b1);
   wait(fy == 1'b1);
+  @(posedge clk); #5;
   mul = 1'b1;
   wait(done == 1'b1);
+  @(posedge clk); #5;
   sz = 1'b1;
   wait(fz == 1'b1);
 

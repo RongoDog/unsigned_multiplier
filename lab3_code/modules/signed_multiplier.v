@@ -48,8 +48,8 @@ shift_in s_inx(
 );
 
 shift_in s_iny(
-    .x_in(x_in),
-    .sx(sx),
+    .x_in(y_in),
+    .sx(sy),
     .reset(rst),
     .clk(clk),
     .x_parallel(y_par),
