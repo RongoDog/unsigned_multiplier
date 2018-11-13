@@ -1,0 +1,516 @@
+always begin
+  #5 clk = ~clk;
+end
+
+initial
+begin 
+
+  clk = 1'b0;
+  reset = 1'b0;
+  sx = 1'b0;
+  sy = 1'b0;
+  sz = 1'b0;
+  mul = 1'b0;
+  x_in = 1'b0;
+  y_in = 1'b0;
+
+  // RESET FOR OUR TEST
+  #20;
+  reset = 1;
+  #10;
+  reset = 0;
+
+  // LOAD THE REGISTERS -1 * 1
+  @(posedge clk); #5;
+  sx = 1'b1;
+  sy = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;  
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+
+  wait(fx == 1'b1);
+  wait(fy == 1'b1);
+  mul = 1'b1;
+  wait(done == 1'b1);
+  sz = 1'b1;
+  wait(fz == 1'b1);
+
+  #10;
+
+  sx = 1'b0;
+  sy = 1'b0;
+  sz = 1'b0;
+  mul = 1'b0;
+  x_in = 1'b0;
+  y_in = 1'b0;
+
+  // RESET FOR OUR TEST
+  #20;
+  reset = 1;
+  #10;
+  reset = 0;
+
+  // LOAD THE REGISTERS 1 * -1
+  @(posedge clk); #5;
+  sx = 1'b1;
+  sy = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;  
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+
+  wait(fx == 1'b1);
+  wait(fy == 1'b1);
+  mul = 1'b1;
+  wait(done == 1'b1);
+  sz = 1'b1;
+  wait(fz == 1'b1);
+
+  #10;
+
+  sx = 1'b0;
+  sy = 1'b0;
+  sz = 1'b0;
+  mul = 1'b0;
+  x_in = 1'b0;
+  y_in = 1'b0;
+
+  // RESET FOR OUR TEST
+  #20;
+  reset = 1;
+  #10;
+  reset = 0;
+
+  // LOAD THE REGISTERS 1023 * 1023
+  @(posedge clk); #5;
+  sx = 1'b1;
+  sy = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;  
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+
+  wait(fx == 1'b1);
+  wait(fy == 1'b1);
+  mul = 1'b1;
+  wait(done == 1'b1);
+  sz = 1'b1;
+  wait(fz == 1'b1);
+
+  #10;
+
+  sx = 1'b0;
+  sy = 1'b0;
+  sz = 1'b0;
+  mul = 1'b0;
+  x_in = 1'b0;
+  y_in = 1'b0;
+
+  // RESET FOR OUR TEST
+  #20;
+  reset = 1;
+  #10;
+  reset = 0;
+
+  // LOAD THE REGISTERS -1024 * -1024
+  @(posedge clk); #5;
+  sx = 1'b1;
+  sy = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;  
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+
+  wait(fx == 1'b1);
+  wait(fy == 1'b1);
+  mul = 1'b1;
+  wait(done == 1'b1);
+  sz = 1'b1;
+  wait(fz == 1'b1);
+
+  #10;
+
+  sx = 1'b0;
+  sy = 1'b0;
+  sz = 1'b0;
+  mul = 1'b0;
+  x_in = 1'b0;
+  y_in = 1'b0;
+
+  // RESET FOR OUR TEST
+  #20;
+  reset = 1;
+  #10;
+  reset = 0;
+
+  // LOAD THE REGISTERS -1024 * 1023
+  @(posedge clk); #5;
+  sx = 1'b1;
+  sy = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;  
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+
+  wait(fx == 1'b1);
+  wait(fy == 1'b1);
+  mul = 1'b1;
+  wait(done == 1'b1);
+  sz = 1'b1;
+  wait(fz == 1'b1);
+
+  #10;
+
+  sx = 1'b0;
+  sy = 1'b0;
+  sz = 1'b0;
+  mul = 1'b0;
+  x_in = 1'b0;
+  y_in = 1'b0;
+
+  // RESET FOR OUR TEST
+  #20;
+  reset = 1;
+  #10;
+  reset = 0;
+
+  // LOAD THE REGISTERS 2047 * 2047
+  @(posedge clk); #5;
+  sx = 1'b1;
+  sy = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;  
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+
+  wait(fx == 1'b1);
+  wait(fy == 1'b1);
+  mul = 1'b1;
+  wait(done == 1'b1);
+  sz = 1'b1;
+  wait(fz == 1'b1);
+
+  #10;
+
+  sx = 1'b0;
+  sy = 1'b0;
+  sz = 1'b0;
+  mul = 1'b0;
+  x_in = 1'b0;
+  y_in = 1'b0;
+
+  // RESET FOR OUR TEST
+  #20;
+  reset = 1;
+  #10;
+  reset = 0;
+
+  // LOAD THE REGISTERS -2048 * -2048
+  @(posedge clk); #5;
+  sx = 1'b1;
+  sy = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;  
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b0;
+
+  wait(fx == 1'b1);
+  wait(fy == 1'b1);
+  mul = 1'b1;
+  wait(done == 1'b1);
+  sz = 1'b1;
+  wait(fz == 1'b1);
+
+  #10;
+
+  sx = 1'b0;
+  sy = 1'b0;
+  sz = 1'b0;
+  mul = 1'b0;
+  x_in = 1'b0;
+  y_in = 1'b0;
+
+  // RESET FOR OUR TEST
+  #20;
+  reset = 1;
+  #10;
+  reset = 0;
+
+  // LOAD THE REGISTERS -2048 * 2047
+  @(posedge clk); #5;
+  sx = 1'b1;
+  sy = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  y_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;  
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  y_in = 1'b1;
+
+  wait(fx == 1'b1);
+  wait(fy == 1'b1);
+  mul = 1'b1;
+  wait(done == 1'b1);
+  sz = 1'b1;
+  wait(fz == 1'b1);
+
+  #10;
+
+  $finish;
+
+end
