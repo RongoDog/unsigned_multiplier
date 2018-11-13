@@ -1,0 +1,48 @@
+
+always begin
+  #5 clk = ~clk;
+end
+
+initial
+begin 
+  clk = 1'b0;
+  enable = 1'b0;
+  reset = 1'b0;
+  x_in[11:0] = 12'b000000000000;
+   
+  #5;
+  enable = 1'b1;
+  reset = 1'b0;
+  #10;
+
+  @(posedge clk); #5;
+  x_in[11:0] = 'hFFF;
+  #10;
+
+  @(posedge clk); #5;
+  x_in[11:0] = 'h001;
+  #10;
+
+  @(posedge clk); #5;
+  x_in[11:0] = 'h0FF;
+  #10;
+
+  @(posedge clk); #5;
+  x_in[11:0] = 'h800;
+  #10;
+
+  @(posedge clk); #5;
+  x_in[11:0] = 'h048;
+  #10;
+
+  @(posedge clk); #5;
+  x_in[11:0] = 'hFB8;
+  #10;
+
+  @(posedge clk); #5;
+  enable = 1'b0;
+
+  #20;
+
+  $finish;
+end 

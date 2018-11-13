@@ -1,0 +1,62 @@
+
+// Verilog stimulus file.
+// Please do not create a module in this file.
+
+
+// Default verilog stimulus. 
+always begin
+  #5 clk = ~clk;
+end
+
+initial
+begin 
+
+  clk = 1'b0;
+  mul = 1'b0;
+  reset = 1'b0;
+  x_pos[11:0] = 12'b000000000000;
+  y_pos[11:0] = 12'b000000000000;
+   
+  #10;
+  reset = 1'b1;
+  #10;
+  reset = 1'b0;
+
+  @(posedge clk); #5;
+  x_pos = 12'b000000000011;
+  y_pos = 12'b000000000001;
+  mul = 1'b1;
+  @(posedge clk); #5;
+  mul = 1'b0;
+  #130;
+
+  #10;
+  reset = 1'b1;
+  #10;
+  reset = 1'b0;
+
+  @(posedge clk); #5;
+  x_pos = 12'b011111111111;
+  y_pos = 12'b011111111111;
+  mul = 1'b1;
+  @(posedge clk); #5;
+  mul = 1'b0;  
+  #130;
+
+  #10;
+  reset = 1'b1;
+  #10;
+  reset = 1'b0;
+
+  @(posedge clk); #5;
+  x_pos = 12'b111111111111;
+  y_pos = 12'b111111111111;
+  mul = 1'b1;
+  @(posedge clk); #5;
+  mul = 1'b0;  
+  #130;
+  
+  #10;
+  $finish;
+
+end 

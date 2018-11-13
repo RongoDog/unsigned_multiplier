@@ -1,0 +1,48 @@
+
+always begin
+  #5 clk = ~clk;
+end
+
+initial
+begin 
+  clk = 1'b0;
+  enable = 1'b0;
+  reset = 1'b0;
+  z_pos[23:0] = 24'b000000000000000000000000;
+   
+  #5;
+  enable = 1'b1;
+  reset = 1'b0;
+  #10;
+
+  @(posedge clk); #5;
+  z_pos[23:0] = 'hFFFFFF;
+  #10;
+
+  @(posedge clk); #5;
+  z_pos[23:0] = 'h000001;
+  #10;
+
+  @(posedge clk); #5;
+  z_pos[23:0] = 'hEFFFFF;
+  #10;
+
+  @(posedge clk); #5;
+  z_pos[23:0] = 'h800000;
+  #10;
+
+  @(posedge clk); #5;
+  z_pos[23:0] = 'h000048;
+  #10;
+
+  @(posedge clk); #5;
+  z_pos[23:0] = 'hFFFFB8;
+  #10;
+
+  @(posedge clk); #5;
+  enable = 1'b0;
+
+  #20;
+
+  $finish;
+end 

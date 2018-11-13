@@ -1,0 +1,142 @@
+always begin
+  #5 clk = ~clk;
+end
+
+initial
+begin 
+
+  clk = 1'b0;
+  reset = 1'b0;
+  sx = 1'b0;
+  x_in = 1'b0;
+
+  // RESET FOR OUR TEST
+
+  #20;
+  reset = 1;
+  #10;
+  reset = 0;
+
+  // WE TEST ALTERNATING 1s AND 0s
+  @(posedge clk); #5;
+  sx = 1;
+
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;  
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+
+  // RESET FOR NEXT TEST
+  #50;
+  reset = 1;
+  sx = 0;
+  #10;
+  reset = 0;
+  
+   
+  // TEST ALTERNATING 1s AND DOUBLE 0s
+  @(posedge clk); #5;
+  sx = 1;
+
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;  
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+
+  // RESET FOR NEXT TEST
+  #50;
+  reset = 1;
+  sx = 0;
+  #10;
+  reset = 0;
+
+  // NEXT WE TEST CHANGING THE INPUT MIDWAY 
+  @(posedge clk); #5;
+  sx = 1;
+  
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  sx = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  sx = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  @(posedge clk); #5;
+  x_in = 1'b0;
+  @(posedge clk); #5;
+  x_in = 1'b1;
+  
+  // BUFFER
+  #50;
+  $finish;
+
+end 
+
+

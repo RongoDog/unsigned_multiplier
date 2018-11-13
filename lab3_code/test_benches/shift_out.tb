@@ -1,0 +1,73 @@
+always begin
+  #5 clk = ~clk;
+end
+
+initial
+begin 
+
+  clk = 1'b0;
+  reset = 1'b0;
+  sz = 1'b0;
+  z_parallel[23:0] = 24'b000000000000000000000000;
+
+  // RESET FOR OUR TEST
+
+  #20;
+  reset = 1;
+  #10;
+  reset = 0;
+
+  // WE TEST ALTERNATING 1s AND 0s
+  @(posedge clk); #5;
+  sz = 1;
+  z_parallel = 24'b010101010101010101010101;
+
+  // TEST SEQUENCE SHOULD BE READ
+  #240;
+
+  // RESET FOR NEXT TEST
+  #50;
+  reset = 1;
+  sz = 0;
+  #10;
+  reset = 0;
+   
+  // TEST ALTERNATING 1s AND DOUBLE 0s
+  @(posedge clk); #5;
+  sz = 1;
+  z_parallel = 24'b100100100100100100100100;
+
+  // TEST SEQUENCE SHOULD BE READ   
+  #240;
+
+  // RESET FOR NEXT TEST
+  #50;
+  reset = 1;
+  sz = 0;
+  #10;
+  reset = 0;
+
+  // NEXT WE TEST CHANGING THE INPUT MIDWAY 
+  @(posedge clk); #5;
+  sz = 1;
+  z_parallel = 24'b100100100100100100100100;
+  
+  // AFTER ANOTHER CLOCK CYCLE SET sz LOW
+  @(posedge clk); #5;
+  sz = 0;
+  // THIS IS ABOUT HALFWAY
+  #120;
+  sz = 1;
+  z_parallel = 24'b100000000000100000000000;
+
+  // TEST REQUENCE SHOULD BE READ
+  #240;
+
+  // BUFFER
+  #50;
+  
+
+  $finish;
+
+end 
+
