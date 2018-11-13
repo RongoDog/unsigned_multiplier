@@ -11,8 +11,10 @@ reg [23:0] z_out_local;
 assign z_out = z_out_local;
 
 always@(posedge clk or posedge reset) begin
-  if (reset | (!enable)) begin
+  if (reset) begin
     z_out_local <= 'b0;
+  end else if (enable) begin
+    z_out_local <= z_pos;
   end else begin 
     z_out_local <= (~z_pos) + 1;
   end
