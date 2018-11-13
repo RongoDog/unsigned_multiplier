@@ -95,11 +95,11 @@ shift_out s_out(
     .fz(fz)
 );
 
-always@(y_par[11] or x_par[11]) begin
+always@(*) begin
     case(y_par[11]^x_par[11])
         1'b0: z_res_final = z_pos;
         1'b1: z_res_final = z_res_signed;
-        default: z_res_final = z_pos;
+        default: z_res_final = 'b0;
     endcase
 end
 
