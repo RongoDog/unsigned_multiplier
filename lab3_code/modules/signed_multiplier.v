@@ -1,9 +1,3 @@
-`include "shift_in.v"
-`include "shift_out.v"
-`include "twos_complement_in.v"
-`include "twos_complement_out.v"
-`include "unsigned_multiplier.v"
-
 module signed_multiplier(
     rst,
     clk,
@@ -31,10 +25,10 @@ output [23:0] z_test;
 
 wire [11:0] x_par;
 wire [11:0] x_pos_par;
-wire [11:0] x_mul;
+reg [11:0] x_mul;
 wire [11:0] y_par;
 wire [11:0] y_pos_par;
-wire [11:0] y_mul;
+reg [11:0] y_mul;
 
 wire [23:0] z_pos;
 wire [23:0] z_res_signed;
@@ -42,7 +36,7 @@ wire [23:0] z_res_final;
 
 assign x_test = x_par;
 assign y_test = y_par;
-assign z_test = z_res_final;
+reg z_test = z_res_final;
 
 shift_in s_inx(
     .x_in(x_in),
