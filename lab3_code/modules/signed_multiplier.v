@@ -23,16 +23,14 @@ module signed_multiplier(
 input rst, clk, sx, sy, mul, sz, x_in, y_in;
 output fx, fy, done, fz, z_out;
 
-output [11:0] x_test, y_test;
+output [11:0] x_test, y_test, x_mul_test, y_mul_test;
 output [23:0] z_test;
 output [23:0] z_test_raw;
 
 wire [11:0] x_par;
-wire [11:0] x_pos_par;
-reg [11:0] x_mul;
+wire [11:0] x_mul;
 wire [11:0] y_par;
-wire [11:0] y_pos_par;
-reg [11:0] y_mul;
+wire [11:0] y_mul;
 
 wire [23:0] z_pos;
 wire [23:0] z_res_signed;
@@ -68,7 +66,7 @@ twos_complement_in twos_in_x(
     .enable(1'b1),
     .reset(rst),
     .clk(clk),
-    .x_pos_out(x_pos_par)
+    .x_pos_out(x_mul)
 );
 
 twos_complement_in twos_in_y(
@@ -76,24 +74,8 @@ twos_complement_in twos_in_y(
     .enable(1'b1),
     .reset(rst),
     .clk(clk),
-    .x_pos_out(y_pos_par)
+    .x_pos_out(y_mul)
 );
-
-always@(x_par[11]) begin
-    case(x_par[11])
-        1'b1: x_mul = x_pos_par;
-        1'b0: x_mul = x_par;
-        default: x_mul = 'b0;
-    endcase    
-end
-
-always@(y_par[11]) begin
-    case(y_par[11])
-        1'b1: y_mul = y_pos_par;
-        1'b0: y_mul = y_par;
-        default: y_mul = 'b0;
-    endcase    
-end
 
 unsigned_multiplier multiplier(
     .mul(mul),
