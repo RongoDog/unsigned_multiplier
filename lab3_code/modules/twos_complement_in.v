@@ -8,7 +8,7 @@ output [11:0] x_pos_out;
 reg [11:0] x_pos;
 assign x_pos_out = x_pos;
 
-always@(posedge clk) begin
+always@(posedge clk or posedge reset) begin
   if (reset | (!enable)) begin
     x_pos <= 'b0;
   end else if (x_in[11]) begin

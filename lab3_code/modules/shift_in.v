@@ -24,7 +24,7 @@ always @(posedge clk or posedge reset) begin
         started <= 0;
     end else if (started) begin
         local_x_parallel <= {local_x_parallel[10:0], x_in};
-	count = count + 1;
+	    count = count + 1;
     end 
 end
 
