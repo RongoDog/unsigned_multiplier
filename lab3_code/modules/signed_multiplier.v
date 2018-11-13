@@ -119,7 +119,7 @@ always@(y_par[0] or x_par[0]) begin
     case(y_par[0]^x_par[0])
         1'b0: z_res_final = z_pos;
         1'b1: z_res_final = z_res_signed;
-        default: z_res_final = 24'b0;
+        default: z_res_final = z_res_signed;
     endcase
 end
 
