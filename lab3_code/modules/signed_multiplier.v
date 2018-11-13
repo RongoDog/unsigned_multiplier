@@ -29,7 +29,7 @@ wire [11:0] y_mul;
 
 wire [23:0] z_pos;
 wire [23:0] z_res_signed;
-reg [23:0] z_res_final;
+wire [23:0] z_res_final;
 
 assign z_test = z_res_final;
 assign z_test_raw = z_pos;
@@ -95,12 +95,6 @@ shift_out s_out(
     .fz(fz)
 );
 
-always@* begin
-    case(y_par[11]^x_par[11])
-        1'b0: z_res_final = z_pos;
-        1'b1: z_res_final = z_res_signed;
-        default: z_res_final = 'b0;
-    endcase
-end
+assign z_res_final = ((y_par[11]^x_par[11]) & z_res_signed) | (!(y_par[11]^x_par[11]) & z_pos); 
 
 endmodule
