@@ -72,18 +72,18 @@ twos_complement_in twos_in_y(
     .x_pos_out(y_pos_par)
 );
 
-always@(x_par[0]) begin
-    case(x_par[0])
-        1'b1: x_mul = x_par;
-        1'b0: x_mul = x_pos_par;
+always@(x_par[11]) begin
+    case(x_par[11])
+        1'b1: x_mul = x_pos_par;
+        1'b0: x_mul = x_par;
         default: x_mul = 'b0;
     endcase    
 end
 
-always@(y_par[0]) begin
-    case(y_par[0])
-        1'b1: y_mul = y_par;
-        1'b0: y_mul = y_pos_par;
+always@(y_par[11]) begin
+    case(y_par[11])
+        1'b1: y_mul = y_pos_par;
+        1'b0: y_mul = y_par;
         default: y_mul = 'b0;
     endcase    
 end
@@ -115,8 +115,8 @@ shift_out s_out(
     .fz(fz)
 );
 
-always@(y_par[0] or x_par[0]) begin
-    case(y_par[0]^x_par[0])
+always@(y_par[11] or x_par[11]) begin
+    case(y_par[11]^x_par[11])
         1'b0: z_res_final = z_pos;
         1'b1: z_res_final = z_res_signed;
         default: z_res_final = z_res_signed;
