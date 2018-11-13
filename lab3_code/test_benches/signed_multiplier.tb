@@ -6,7 +6,7 @@ initial
 begin 
 
   clk = 1'b0;
-  reset = 1'b0;
+  rst = 1'b0;
   sx = 1'b0;
   sy = 1'b0;
   sz = 1'b0;
@@ -16,9 +16,9 @@ begin
 
   // RESET FOR OUR TEST
   #20;
-  reset = 1;
+  rst = 1;
   #10;
-  reset = 0;
+  rst = 0;
 
   // LOAD THE REGISTERS -1 * 1
   @(posedge clk); #5;
@@ -79,9 +79,9 @@ begin
 
   // RESET FOR OUR TEST
   #20;
-  reset = 1;
+  rst = 1;
   #10;
-  reset = 0;
+  rst = 0;
 
   // LOAD THE REGISTERS 1 * -1
   @(posedge clk); #5;
@@ -142,9 +142,9 @@ begin
 
   // RESET FOR OUR TEST
   #20;
-  reset = 1;
+  rst = 1;
   #10;
-  reset = 0;
+  rst = 0;
 
   // LOAD THE REGISTERS 1023 * 1023
   @(posedge clk); #5;
@@ -205,9 +205,9 @@ begin
 
   // RESET FOR OUR TEST
   #20;
-  reset = 1;
+  rst = 1;
   #10;
-  reset = 0;
+  rst = 0;
 
   // LOAD THE REGISTERS -1024 * -1024
   @(posedge clk); #5;
@@ -268,9 +268,9 @@ begin
 
   // RESET FOR OUR TEST
   #20;
-  reset = 1;
+  rst = 1;
   #10;
-  reset = 0;
+  rst = 0;
 
   // LOAD THE REGISTERS -1024 * 1023
   @(posedge clk); #5;
@@ -331,9 +331,9 @@ begin
 
   // RESET FOR OUR TEST
   #20;
-  reset = 1;
+  rst = 1;
   #10;
-  reset = 0;
+  rst = 0;
 
   // LOAD THE REGISTERS 2047 * 2047
   @(posedge clk); #5;
@@ -394,9 +394,9 @@ begin
 
   // RESET FOR OUR TEST
   #20;
-  reset = 1;
+  rst = 1;
   #10;
-  reset = 0;
+  rst = 0;
 
   // LOAD THE REGISTERS -2048 * -2048
   @(posedge clk); #5;
@@ -457,9 +457,9 @@ begin
 
   // RESET FOR OUR TEST
   #20;
-  reset = 1;
+  rst = 1;
   #10;
-  reset = 0;
+  rst = 0;
 
   // LOAD THE REGISTERS -2048 * 2047
   @(posedge clk); #5;
