@@ -15,6 +15,7 @@ module signed_multiplier(
     x_test,
     y_test,
     z_test,
+    z_test_raw,
     x_mul_test,
     y_mul_test
 );
