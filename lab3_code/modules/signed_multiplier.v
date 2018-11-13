@@ -29,16 +29,16 @@ output fx, fy, done, fz, z_out;
 output [11:0] x_test, y_test;
 output [23:0] z_test;
 
-reg [11:0] x_par;
-reg [11:0] x_pos_par;
-reg [11:0] x_mul;
-reg [11:0] y_par;
-reg [11:0] y_pos_par;
-reg [11:0] y_mul;
+wire [11:0] x_par;
+wire [11:0] x_pos_par;
+wire [11:0] x_mul;
+wire [11:0] y_par;
+wire [11:0] y_pos_par;
+wire [11:0] y_mul;
 
-reg [23:0] z_pos;
-reg [23:0] z_res_signed;
-reg [23:0] z_res_final;
+wire [23:0] z_pos;
+wire [23:0] z_res_signed;
+wire [23:0] z_res_final;
 
 assign x_test = x_par;
 assign y_test = y_par;
