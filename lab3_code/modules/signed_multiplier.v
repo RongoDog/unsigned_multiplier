@@ -20,7 +20,7 @@ module signed_multiplier(
 input rst, clk, sx, sy, mul, sz, x_in, y_in;
 output fx, fy, done, fz, z_out;
 
-output [11;0] x_test, y_test;
+output [11:0] x_test, y_test;
 output [23:0] z_test;
 
 wire [11:0] x_par;
