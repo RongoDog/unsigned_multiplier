@@ -14,7 +14,9 @@ module signed_multiplier(
     z_out,
     x_test,
     y_test,
-    z_test
+    z_test,
+    x_mul_test,
+    y_mul_test
 );
 
 input rst, clk, sx, sy, mul, sz, x_in, y_in;
@@ -39,6 +41,8 @@ assign x_test = x_par;
 assign y_test = y_par;
 assign z_test = z_res_final;
 assign z_test_raw = z_pos;
+assign x_mul_test = x_mul;
+assign y_mul_test = y_mul;
 
 shift_in s_inx(
     .x_in(x_in),
