@@ -81,7 +81,7 @@ unsigned_multiplier multiplier(
 
 twos_complement_out twos_out(
     .z_pos(z_pos),
-    .enable(y_par[11]^x_par[11]),
+    .enable(!(y_par[11]^x_par[11])),
     .reset(rst),
     .clk(clk),
     .z_out(z_res_signed)
