@@ -30,11 +30,10 @@ wire [11:0] y_mul;
 
 wire [23:0] z_pos;
 wire [23:0] z_res_signed;
-wire [23:0] z_res_final;
 
 assign x_test = x_par;
 assign y_test = y_par;
-assign z_test = z_res_final;
+assign z_test = z_res_signed;
 
 shift_in s_inx(
     .x_in(x_in),
