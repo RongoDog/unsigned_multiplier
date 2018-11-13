@@ -70,7 +70,7 @@ begin
   sz = 1'b1;
   wait(fz == 1'b1);
 
-  #10;
+  #120;
 
   sx = 1'b0;
   sy = 1'b0;
@@ -135,7 +135,7 @@ begin
   sz = 1'b1;
   wait(fz == 1'b1);
 
-  #10;
+  #120;
 
   sx = 1'b0;
   sy = 1'b0;
@@ -200,7 +200,7 @@ begin
   sz = 1'b1;
   wait(fz == 1'b1);
 
-  #10;
+  #120;
 
   sx = 1'b0;
   sy = 1'b0;
@@ -265,7 +265,7 @@ begin
   sz = 1'b1;
   wait(fz == 1'b1);
 
-  #10;
+  #120;
 
   sx = 1'b0;
   sy = 1'b0;
@@ -330,7 +330,7 @@ begin
   sz = 1'b1;
   wait(fz == 1'b1);
 
-  #10;
+  #120;
 
   sx = 1'b0;
   sy = 1'b0;
@@ -395,7 +395,7 @@ begin
   sz = 1'b1;
   wait(fz == 1'b1);
 
-  #10;
+  #120;
 
   sx = 1'b0;
   sy = 1'b0;
@@ -460,7 +460,7 @@ begin
   sz = 1'b1;
   wait(fz == 1'b1);
 
-  #10;
+  #120;
 
   sx = 1'b0;
   sy = 1'b0;
@@ -525,7 +525,7 @@ begin
   sz = 1'b1;
   wait(fz == 1'b1);
 
-  #10;
+  #120;
 
   $finish;
 
