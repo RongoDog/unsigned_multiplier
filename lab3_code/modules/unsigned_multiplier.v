@@ -53,7 +53,7 @@ always@(posedge clk or posedge reset) begin
 end
 
 
-always@(posedge mul) begin
+always@(mul or count or state) begin
     if (~mul) begin
         went_low = 'b1;
     end else if (mul & went_low) begin
@@ -85,8 +85,8 @@ always @(state or count) begin
             local_done = 'b0;
         end
         DONE: begin
-            local_z_pos <= local_z_pos;
-            local_done = 'b0;
+            local_z_pos = local_z_pos;
+            local_done = 'b1;
         end
         default: begin
             local_z_pos = 'b0;
