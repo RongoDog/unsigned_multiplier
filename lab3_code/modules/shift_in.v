@@ -1,6 +1,8 @@
-module shift_in 
-    #(parameter WAITING = 2'b00, parameter SHIFTING = 2'b01, parameter DONE = 2'b00)
-    (x_in, sx, reset, clk, x_parallel, fx);
+module shift_in (x_in, sx, reset, clk, x_parallel, fx);
+
+parameter WAITING = 2'b00;
+parameter SHIFTING = 2'b01;
+parameter DONE = 2'b10;
 
 input x_in, sx, reset, clk;
 
