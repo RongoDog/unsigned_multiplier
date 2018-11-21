@@ -38,6 +38,9 @@ always @(posedge clk or posedge reset) begin
                 state <= DONE;
                 count <= count;
             end
+        end else if (state == DONE) begin
+            state <= DONE;
+            count <= count;
         end else begin
             state <= WAITING;
             count <= 'b0;
