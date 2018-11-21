@@ -36,6 +36,8 @@ always @(sx or next_count or next_state) begin
         went_low = 'b1;
     end else if (next_state == SHIFTING && next_count == 'b0) begin
         went_low = 'b0;
+    end else begin
+        went_low = 'b0;
     end
 end
 
