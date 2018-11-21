@@ -50,7 +50,6 @@ always @(state or count or restart) begin
             WAITING: begin
                 next_state = WAITING;
                 next_count = 'b0;
-                restarted = 'b0;
             end
             SHIFTING: begin
                 if (count > 4'd11) begin
