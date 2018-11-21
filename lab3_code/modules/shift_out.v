@@ -72,7 +72,7 @@ always @(state or count) begin
             local_fz <= 'b1;
         end
         SHIFTING: begin
-            tmp <= {tmp[22:0], 1'b0};
+            tmp <= tmp << 1;
             local_fz <= 'b1;
         end
         DONE: begin
@@ -85,6 +85,5 @@ always @(state or count) begin
         end
     endcase
 end
-
 
 endmodule
