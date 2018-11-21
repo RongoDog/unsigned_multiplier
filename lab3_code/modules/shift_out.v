@@ -23,7 +23,6 @@ reg [4:0] count;
 reg [23:0] tmp;
 assign z_out = tmp[0];
 
-
 always @(posedge clk or posedge reset) begin
     if (reset) begin
         state <= WAITING;
@@ -52,7 +51,7 @@ end
 
 always @(sz or count or state) begin
     if (~sz) begin
-        went_low = 'b0;
+        went_low = 'b1;
     end else if (sz & went_low) begin
         load = 'b1;
         went_low = 'b0;
