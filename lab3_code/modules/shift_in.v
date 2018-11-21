@@ -32,7 +32,7 @@ always @(posedge clk or posedge reset) begin
         end else if (started | in_progress) begin
             started <= 'b0;
             in_progress <= 'b1;
-            if (count > 4'd12) begin
+            if (count > 4'd11) begin
                 local_x_parallel <= local_x_parallel;
                 local_fx <= 'b1;
                 count <= count;
