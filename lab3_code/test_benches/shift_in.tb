@@ -96,7 +96,7 @@ begin
   
   @(posedge clk); #5;
   x_in = 1'b0;
-  sx = 1'b1;
+  sx = 1'b0;
   @(posedge clk); #5;
   x_in = 1'b0;
   @(posedge clk); #5;
