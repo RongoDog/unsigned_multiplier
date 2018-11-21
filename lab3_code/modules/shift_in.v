@@ -47,11 +47,12 @@ always @(state or count or restart) begin
         next_count = 'b0;
     end else begin
         case (state)
-            WAITING:
+            WAITING: begin
                 next_state = WAITING;
                 next_count = 'b0;
                 restarted = 'b0;
-            SHIFTING:
+            end
+            SHIFTING: begin
                 if (count > 4'd11) begin
                     next_state = DONE;
                     next_count = count;
@@ -59,30 +60,37 @@ always @(state or count or restart) begin
                     next_state = SHIFTING;
                     next_count = count + 1;
                 end
-            DONE:
+            end
+            DONE: begin
                 next_state = DONE;
                 next_count = count;
-            default:
+            end
+            default: begin
                 next_state = WAITING;
                 next_count = 'b0;
+            end
         endcase
     end
 end
 
 always @(state or count) begin
     case (state)
-        WAITING:
+        WAITING: begin
             local_x_parallel = 'b0;
             local_fx = 'b0;
-        SHIFTING:
+        end
+        SHIFTING: begin
             local_x_parallel = {local_x_parallel[10:0], x_in};
             local_fx = 'b0;
-        DONE:
+        end
+        DONE: begin
             local_x_parallel = local_x_parallel;
             local_fx = 'b1;
-        default:
+        end
+        default: begin
             local_x_parallel = 'b0;
             local_fx = 'b0;
+        end
     endcase
 end
 
