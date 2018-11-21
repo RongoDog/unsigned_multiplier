@@ -19,7 +19,6 @@ reg [1:0] next_state;
 reg [3:0] count;
 reg [3:0] next_count;
 
-reg increment_counter;
 reg reset_counter;
 reg went_low;
 
