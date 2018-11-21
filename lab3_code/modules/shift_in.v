@@ -31,9 +31,12 @@ always @(posedge clk or posedge reset) begin
         if (reset_counter) begin
             state <= SHIFTING;
             count <= 'b0;
-        end else if (increment_counter) begin
-            state <= next_state;
+        end else if (count < 4'd11) begin
+            state <= SHIFTING;
             count <= count + 1;
+        end else begin
+            state <= DONE;
+            count <= count;
         end
     end
 end
@@ -48,32 +51,6 @@ always @(sx or count or state) begin
         reset_counter <= 'b0;
         went_low <= 'b0;
     end
-end
-
-always @(state or count) begin
-    case (state)
-        WAITING: begin
-            next_state = WAITING;
-            increment_counter = 0;
-        end
-        SHIFTING: begin
-            if (count == 4'd11) begin
-                next_state = DONE;
-                increment_counter = 0;
-            end else begin
-                next_state = SHIFTING;
-                increment_counter = 1;
-            end
-        end
-        DONE: begin
-            next_state = DONE;
-            increment_counter = 0;
-        end
-        default: begin
-            next_state = WAITING;
-            increment_counter = 0;
-        end
-    endcase
 end
 
 always @(state or count) begin
