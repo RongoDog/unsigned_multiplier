@@ -17,6 +17,7 @@ reg local_done;
 assign done = local_done;
 
 reg load;
+reg went_low;
 
 reg [1:0] state;
 reg [3:0] count;
