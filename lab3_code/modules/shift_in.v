@@ -57,7 +57,7 @@ always @(state or count) begin
             increment_counter = 0;
         end
         SHIFTING: begin
-            if (count > 4'd11) begin
+            if (count == 4'd11) begin
                 next_state = DONE;
                 increment_counter = 0;
             end else begin
