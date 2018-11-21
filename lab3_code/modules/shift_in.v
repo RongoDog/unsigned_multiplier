@@ -18,7 +18,7 @@ reg [3:0] count;
 reg [3:0] next_count;
 
 reg went_low;
-wire restart 
+wire restart;
 assign restart = sx&went_low;
 
 always @(posedge clk or posedge reset) begin
@@ -47,11 +47,11 @@ always @(state or count or restart) begin
         next_count = 'b0;
     end else begin
         case (state)
-            case WAITING:
+            WAITING:
                 next_state = WAITING;
                 next_count = 'b0;
                 restarted <= 0;
-            case SHIFTING;
+            SHIFTING;
                 if (count > 4'd11) begin
                     next_state = DONE;
                     next_count = count;
@@ -59,7 +59,7 @@ always @(state or count or restart) begin
                     next_state = SHIFTING;
                     next_count = count + 1;
                 end
-            case DONE:
+            DONE:
                 next_state = DONE;
                 next_count = count;
             default:
