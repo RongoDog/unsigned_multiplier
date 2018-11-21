@@ -19,59 +19,60 @@ reg [1:0] next_state;
 reg [3:0] count;
 reg [3:0] next_count;
 
-reg went_low;
-wire restart;
-assign restart = sx&went_low;
+reg increment_counter;
+reg reset_counter;
 
 always @(posedge clk or posedge reset) begin
     if (reset) begin
         state <= WAITING;
         count <= 'b0;
     end else begin
-        state <= next_state;
-        count <= next_count;
+        if (reset_counter) begin
+            state <= SHIFTING;
+            count <= 'b0;
+        end else if (increment_counter) begin
+            state <= next_state;
+            count <= count + 1;
+        end
     end
 end
 
-always @(sx or next_count or next_state) begin
+always @(sx or count) begin
     if (~sx) begin
         went_low = 'b1;
-    end else if (next_state == SHIFTING && next_count == 'b0) begin
-        went_low = 'b0;
-    end else begin
-        went_low = 'b0;
+    end else if (sx & went_low) begin
+        reset_counter <= 'b1;
+        went_low <= 'b0;
+    end else if (sx & ~went_low) begin
+        reset_counter <= 'b0;
+        went_low <= 'b0;
     end
 end
 
-always @(state or count or restart) begin
-    if (restart) begin
-        next_state = SHIFTING;
-        next_count = 'b0;
-    end else begin
-        case (state)
-            WAITING: begin
-                next_state = WAITING;
-                next_count = 'b0;
-            end
-            SHIFTING: begin
-                if (count > 4'd11) begin
-                    next_state = DONE;
-                    next_count = count;
-                end else begin
-                    next_state = SHIFTING;
-                    next_count = count + 1;
-                end
-            end
-            DONE: begin
+always @(state) begin
+    case (state)
+        WAITING: begin
+            next_state = WAITING;
+            increment_counter = 0;
+        end
+        SHIFTING: begin
+            if (count > 4'd11) begin
                 next_state = DONE;
-                next_count = count;
+                increment_counter = 0;
+            end else begin
+                next_state = SHIFTING;
+                increment_counter = 1;
             end
-            default: begin
-                next_state = WAITING;
-                next_count = 'b0;
-            end
-        endcase
-    end
+        end
+        DONE: begin
+            next_state = DONE;
+            increment_counter = 0;
+        end
+        default: begin
+            next_state = WAITING;
+            increment_counter = 0;
+        end
+    endcase
 end
 
 always @(state or count) begin
