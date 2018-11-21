@@ -68,19 +68,19 @@ always @(state or count) begin
             local_fz = 'b0;
         end
         LOAD: begin
-            tmp <= z_parallel;
-            local_fz <= 'b1;
+            tmp = z_parallel;
+            local_fz = 'b1;
         end
         SHIFTING: begin
-            tmp <= tmp << 1;
-            local_fz <= 'b1;
+            tmp = tmp << 1;
+            local_fz = 'b1;
         end
         DONE: begin
-            tmp <= 'b0;
+            tmp = 'b0;
             local_fz = 'b0;
         end
         default: begin
-            tmp <= 'b0;
+            tmp = 'b0;
             local_fz = 'b0;
         end
     endcase
