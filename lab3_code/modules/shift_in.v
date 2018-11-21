@@ -21,6 +21,7 @@ reg [3:0] next_count;
 
 reg increment_counter;
 reg reset_counter;
+reg went_low;
 
 always @(posedge clk or posedge reset) begin
     if (reset) begin
