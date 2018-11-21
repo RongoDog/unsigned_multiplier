@@ -37,7 +37,7 @@ always @(posedge clk or posedge reset) begin
     end
 end
 
-always @(sx or count) begin
+always @(sx or count or state) begin
     if (~sx) begin
         went_low = 'b1;
     end else if (sx & went_low) begin
