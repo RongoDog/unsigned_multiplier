@@ -44,11 +44,11 @@ always @(sx or count or state) begin
     if (~sx) begin
         went_low = 'b1;
     end else if (sx & went_low) begin
-        reset_counter <= 'b1;
-        went_low <= 'b0;
+        reset_counter = 'b1;
+        went_low = 'b0;
     end else if (sx & ~went_low) begin
-        reset_counter <= 'b0;
-        went_low <= 'b0;
+        reset_counter = 'b0;
+        went_low = 'b0;
     end
 end
 
