@@ -21,7 +21,7 @@ reg [1:0] state;
 reg [4:0] count;
 
 reg [23:0] tmp;
-assign z_out = tmp[0];
+assign z_out = tmp[23];
 
 always @(posedge clk or posedge reset) begin
     if (reset) begin
@@ -72,7 +72,7 @@ always @(state or count) begin
             local_fz <= 'b1;
         end
         SHIFTING: begin
-            tmp <= {1'b0, tmp[23:1]};
+            tmp <= {tmp[22:0], 1'b0};
             local_fz <= 'b1;
         end
         DONE: begin
