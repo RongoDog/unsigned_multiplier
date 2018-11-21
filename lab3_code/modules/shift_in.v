@@ -36,7 +36,7 @@ always @(posedge clk or posedge reset) begin
                 local_x_parallel <= local_x_parallel;
                 local_fx <= 'b1;
                 count <= count;
-            end else
+            end else begin
                 local_x_parallel <= {local_x_parallel[10:0], x_in};
                 local_fx <= 'b0;
                 count <= count + 1;
