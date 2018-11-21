@@ -3,8 +3,9 @@
 module shift_out (z_parallel, sz, reset, clk, z_out, fz);
 
 parameter WAITING = 2'b00;
-parameter SHIFTING = 2'b01;
-parameter DONE = 2'b10;
+parameter LOAD = 2'b01;
+parameter SHIFTING = 2'b10;
+parameter DONE = 2'b11;
 
 input [23:0] z_parallel;
 input sz, reset, clk;
@@ -15,10 +16,13 @@ assign fz = local_fz;
 
 reg went_low;
 reg load;
+
+reg [1:0] state;
 reg [4:0] count;
 
 reg [23:0] tmp;
 assign z_out = tmp[0];
+
 
 always @(posedge clk or posedge reset) begin
     if (reset) begin

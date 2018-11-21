@@ -15,9 +15,7 @@ reg local_fx;
 assign fx = local_fx;
 
 reg [1:0] state;
-reg [1:0] next_state;
 reg [3:0] count;
-reg [3:0] next_count;
 
 reg reset_counter;
 reg went_low;
