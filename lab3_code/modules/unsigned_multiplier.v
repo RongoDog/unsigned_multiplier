@@ -35,7 +35,7 @@ always@(posedge clk or posedge reset) begin
             state <= LOAD;
             count <= 'b0;
         end else if (state == MULTIPLYING || state == LOAD) begin
-            if (count < 4'd11) begin
+            if (count < 4'd12) begin
                 state <= MULTIPLYING;
                 count <= count + 1;
             end else begin
@@ -82,7 +82,11 @@ always @(state or count) begin
             end
             local_z_pos = local_z_pos >> 1; 
             local_z_pos[23] = temp_sum[12];
-            local_done = 'b0;
+            if (count < 4'd12) begin
+                local_done = 'b0;
+            end else begin
+                local_done = 'b1;
+            end
         end
         DONE: begin
             local_z_pos = local_z_pos;
