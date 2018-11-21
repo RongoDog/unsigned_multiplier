@@ -10,8 +10,9 @@ output fz, z_out;
 reg local_fz;
 assign fz = local_fz;
 
-reg started; 
-reg has_started;
+reg load;
+reg loaded;
+reg in_progress;
 reg [4:0] count;
 
 reg [23:0] tmp;
@@ -20,32 +21,41 @@ assign z_out = tmp[0];
 always @(posedge clk or posedge reset) begin
     if (reset) begin
         tmp <= 'b0;
-        local_fz <= 0;
+        local_fz <= 'b0;
         count <= 'b0;
-        started <= 0;
-    end else if (started) begin
-        tmp <= {1'b0, tmp[23:1]};
-        count <= count + 1;
-    end else if (has_started) begin
+        loaded <= 'b0;
+        in_progress <= 'b0;
+    end else if (load) begin
         tmp <= z_parallel;
-        count <= 5'b00000;
-        started <= 1'b1;
-        local_fz <= 1;
-        has_started <= 0;
-    end 
-end
-
-always @(posedge sz) begin
-    has_started <= 1'b1;
-    started <= 1'b0;
-end
-
-always @(count) begin
-    if (count > 5'd23) begin
-        tmp <= 'b0;
-        local_fz <= 0; 
-        started <= 0;
-        count <= 5'b0000;
+        local_fz <= 'b1;
+        count <= 'b0;
+        loaded <= 'b1;
+        in_progress <= 'b0;
+    end else if (loaded | in_progress) begin
+        loaded <= 'b0;
+        in_progress <= 'b1;
+        if (count > 5'd23) begin
+            tmp <= 'b0;
+            local_fz <= 'b0; 
+            count <= 'b0;
+        end else begin
+            tmp <= {1'b0, tmp[23:1]};
+            local_fz <= 'b1;
+            count <= count + 1;
+        end
     end
 end
+
+always @(posedge sz or posedge reset or posedge loaded) begin
+    if (reset) begin
+        load <= 'b0;
+    end else if (loaded) begin
+        load <= 'b0;
+    end else if (sz) begin
+        load <= 'b1;
+    end else begin
+        load <= 'b0;
+    end
+end
+
 endmodule
