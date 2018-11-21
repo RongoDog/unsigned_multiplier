@@ -30,12 +30,17 @@ always @(posedge clk or posedge reset) begin
         if (reset_counter) begin
             state <= SHIFTING;
             count <= 'b0;
-        end else if (count < 4'd11) begin
-            state <= SHIFTING;
-            count <= count + 1;
+        end else if (state == SHIFTING) begin 
+            else if (count < 4'd11) begin
+                state <= SHIFTING;
+                count <= count + 1;
+            end else begin
+                state <= DONE;
+                count <= count;
+            end
         end else begin
-            state <= DONE;
-            count <= count;
+            state <= WAITING;
+            count <= 'b0;
         end
     end
 end
@@ -46,7 +51,7 @@ always @(sx or count or state) begin
     end else if (sx & went_low) begin
         reset_counter = 'b1;
         went_low = 'b0;
-    end else if (sx & ~went_low) begin
+    end else begin
         reset_counter = 'b0;
         went_low = 'b0;
     end
