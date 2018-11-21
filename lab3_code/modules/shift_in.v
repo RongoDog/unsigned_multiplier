@@ -51,15 +51,11 @@ always @(posedge clk or posedge reset) begin
     end
 end
 
-always @(posedge sx or posedge started or posedge reset) begin
-    if (reset) begin
-        restart <= 'b0;
-    end else if (started) begin
-        restart <= 'b0;
-    end else if (sx) begin
-        restart <= 'b1;
-    end else begin
-        restart <= 'b0;
+always @(sx or started) begin
+    if (sx & ~started) begin
+        restart = 'b1;
+    end else begin 
+        restart = 'b0;
     end
 end
 
