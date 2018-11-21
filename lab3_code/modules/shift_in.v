@@ -50,7 +50,7 @@ always @(sx or count or state) begin
     end
 end
 
-always @(state) begin
+always @(state or count) begin
     case (state)
         WAITING: begin
             next_state = WAITING;
