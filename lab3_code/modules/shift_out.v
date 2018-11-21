@@ -32,7 +32,7 @@ always @(posedge clk or posedge reset) begin
             state <= LOAD;
             count <= 'b0;
         end else if (state == SHIFTING || state == LOAD) begin
-            if (count < 4'd23) begin
+            if (count < 5'd23) begin
                 state <= SHIFTING;
                 count <= count + 1;
             end else begin
